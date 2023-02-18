@@ -1,0 +1,24 @@
+[
+    {
+        "name": "嗨皮漫畫 - 給本王顯示全部章節",
+        "example": "https://m.happymh.com/manga/daiwangraoming",
+        "url": "^https://m\\.happymh\\.com/manga/",
+        "autoClick": "#expandButton"
+    },
+    {
+        "name": "嗨皮漫畫 - 更新頁",
+        "example": "https://m.happymh.com/latest",
+        "url": "^https://m\\.happymh\\.com/latest$",
+        "loadMore": ".more-div-btn"
+    },
+    {
+        "name": "嗨皮漫畫 - 閱讀 - 手動翻頁 - 雙擊前往下一話，鍵盤左右鍵上下話",
+        "example": "https://m.happymh.com/manga/shishijilingdishejishi",
+        "url": "^https://m\\.happymh\\.com/reads/",
+        "init": "function gx(x){return document.evaluate(x,document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue}function next(e){let key=window.event?e.keyCode:e.which;if(key=='39'){let n=gx(\"//a[span[text()='下一话' or text()='下一話'] and contains(@href,'reads')]\");if(n){n.click()}else{alert('沒有下一话了！')}}};document.addEventListener('keydown',next);function prev(e){let key=window.event?e.keyCode:e.which;if(key=='37'){let p=gx(\"//a[span[text()='上一话' or text()='上一話'] and contains(@href,'reads')]\");if(p){p.click()}else{alert('沒有上一话了！')}}};document.addEventListener('keydown',prev);function dcnext(){document.querySelector('footer a').click()}document.addEventListener('dblclick',dcnext);setTimeout(()=>{let p=document.querySelector(`footer p:nth-child(2)>a[href*='reads']`);if(p){p.classList.add('MuiButton-containedPrimary');let f=document.querySelector('footer>article');let pnc=f.lastChild.cloneNode(true);pnc.firstChild.href='/latest';pnc.firstChild.firstChild.innerText='更新';f.appendChild(pnc);let pbc=f.lastChild.cloneNode(true);pbc.firstChild.href='/bookcase';pbc.firstChild.firstChild.innerText='收藏';f.appendChild(pbc)}let n=document.querySelector(`footer a[href*='readMore']`);if(n){n.classList.remove('MuiButton-containedPrimary');n.firstChild.innerText='^_^感谢您的阅读~已经没有下一话了哦~'}},2000)",
+        "nextLink": "0",
+        "pinUrl": true,
+        "manualMode": true,
+        "css": "#root>div>header+div{display:none!important}"
+    }
+]
